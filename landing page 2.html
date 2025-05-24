@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stich n Culture</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-size: 26px;
+      color: #333;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #666;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #2196f3;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 50px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 50%;
+      animation: fadeInLeft 1s ease;
+    }
+
+    .hero-text h3 {
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #555;
+    }
+
+    .hero-text h1 {
+      font-size: 50px;
+      font-weight: 800;
+      margin: 10px 0;
+    }
+
+    .hero-text p {
+      margin: 15px 0 30px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .hero-text button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #00bcd4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero-text button:hover {
+      background: #0097a7;
+    }
+
+    .hero-img {
+      max-width: 45%;
+      animation: fadeInRight 1s ease;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-img img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .hero-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes fadeInLeft {
+      from {opacity: 0; transform: translateX(-50px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+
+    @keyframes fadeInRight {
+      from {opacity: 0; transform: translateX(50px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* About Us */
+    .about-us {
+      padding: 60px 50px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .about-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 50%;
+      animation: fadeInLeft 1s ease;
+    }
+
+    .about-text h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .about-text h4 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .about-text p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .about-img {
+      flex: 1;
+      text-align: center;
+      animation: fadeInRight 1s ease;
+    }
+
+    .about-img img {
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-more {
+      padding: 10px 20px;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .read-more:hover {
+      opacity: 0.8;
+    }
+
+    /* Services */
+    .services {
+      padding: 60px 50px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    .services h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .service-cards {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .card {
+      flex: 1 1 30%;
+      background: white;
+      padding: 40px 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+
+    .card h4 {
+      font-size: 20px;
+      color: #333;
+      margin-top: 15px;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      background-color: #e3f2fd;
+    }
+
+    .card:hover img {
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .hero, .about-container, .service-cards {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text, .hero-img, .about-text, .about-img {
+        max-width: 100%;
+      }
+
+      .service-cards {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Stich n Culture</h1>
+    <nav>
+      <a href="#" class="active">HOME</a>
+      <a href="#">ABOUT US</a>
+      <a href="#">SHOP</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h3>OUTFIT OF THE DAY</h3>
+      <h1>ALL YOUR <br> <span style="color: #333;">STYLES ARE HERE</span></h1>
+      <p>Discover the latest trends in clothing. High quality, perfect fit, and stunning styles await you!</p>
+      <button>BUY NOW</button>
+    </div>
+    <div class="hero-img">
+      <img src="Winter_Outfit_Ideas.png" alt="Casual Jacket">
+    </div>
+  </section>
+
+  <section class="about-us">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>ABOUT US</h2>
+        <h4><strong>15 Years</strong> of Passion and Craft</h4>
+        <p>At Stich n Culture, we believe in delivering more than just clothes – we offer a lifestyle. With over 15 years of experience in fashion, our brand is a blend of creativity, innovation, and quality. We pride ourselves on creating stunning collections that help our customers express their unique personality. Whether you're dressing for a casual day out or a special occasion, our designs are tailored to provide comfort, style, and confidence. Welcome to the future of fashion, where culture meets modern trends.</p>
+        <button class="read-more">READ MORE</button>
+      </div>
+     
+    </div>
+  </section>
+
+  <section class="services">
+    <h2>OUR SERVICES</h2>
+    <div class="service-cards">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Quality Materials">
+        <h4>QUALITY MATERIALS</h4>
+        <p>We carefully select only the best materials for ultimate comfort and durability.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3105/3105793.png" alt="Creative Design">
+        <h4>CREATIVE DESIGN</h4>
+        <p>Our design team constantly innovates to bring you the freshest and most stylish looks.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3305/3305951.png" alt="Custom Fit">
+        <h4>CUSTOM FIT</h4>
+        <p>Get your perfect fit with our made-to-measure services, tailored just for you.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
