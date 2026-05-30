@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ladies Collection | Stich n Culture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5e8d5, #e8d9c5);
+      color: #333;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-x: hidden;
+    }
+
+    /* Promo Bar with Marquee Effect */
+    .promo-bar {
+      background: #fff;
+      padding: 10px 0;
+      font-size: 14px;
+      color: #8b4513;
+      font-weight: 500;
+      border-bottom: 1px solid #eee;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee span {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .marquee i {
+      margin: 0 15px;
+      color: #d4a76a;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Enhanced Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: #f5e8d5(255, 255, 255, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo h2 {
+      font-size: 28px;
+      color: #8b4513;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .logo h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #d4a76a;
+      transition: width 0.3s ease;
+    }
+    .logo h2:hover::after {
+      width: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      font-size: 15px;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #8b4513;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::before {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #8b4513;
+    }
+
+    .nav-links a.active {
+      font-weight: 600;
+      color: #8b4513;
+    }
+
+    .nav-links a.active::before {
+      width: 100%;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icons i {
+      font-size: 18px;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      position: relative;
+    }
+
+    .icons i:hover {
+      color: #8b4513;
+      transform: translateY(-3px);
+    }
+
+    .icons i::after {
+      content: attr(data-count);
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 10px;
+      background: #8b4513;
+      color: white;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s ease;
+    }
+
+    .icons i:hover::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .shop-now {
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .shop-now a {
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .shop-now:hover {
+      transform: translateX(5px);
+    }
+
+    .shop-now a:hover {
+      color: #8b4513;
+    }
+
+    .shop-now a::after {
+      content: '+';
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .shop-now a:hover::after {
+      transform: rotate(90deg);
+    }
+
+    .toggle-switch {
+      width: 50px;
+      height: 24px;
+      background-color: #ddd;
+      border-radius: 30px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .toggle-switch::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .toggle-switch.active {
+      background-color: #8b4513;
+    }
+
+    .toggle-switch.active::before {
+      transform: translateX(26px);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 60vh;
+      background: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 1s 0.3s forwards;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 1s 0.5s forwards;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #8b4513;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 1s 0.7s forwards;
+      box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+    }
+
+    .hero-btn:hover {
+      background: #a05a28;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(139, 69, 19, 0.5);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Categories Section */
+    .categories {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .categories h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #5a3921;
+      position: relative;
+      display: inline-block;
+    }
+
+    .categories h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #8b4513;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .category-card h3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #5a3921;
+      font-size: 1.1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .category-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .category-card:hover h3 {
+      transform: translateY(0);
+    }
+
+    /* Products Section */
+    .products {
+      padding: 80px 40px;
+      text-align: center;
+      background: #f9f5f0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #5a3921;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #8b4513;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #777;
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #8b4513;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-actions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .product-action {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .product-action:hover {
+      background: #8b4513;
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .product-category {
+      font-size: 0.9rem;
+      color: #8b4513;
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .current-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #5a3921;
+    }
+
+    .original-price {
+      font-size: 0.9rem;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .discount {
+      font-size: 0.8rem;
+      color: #e74c3c;
+      font-weight: 600;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .product:hover .product-img img {
+      transform: scale(1.05);
+    }
+
+    .product:hover .product-actions {
+      transform: translateY(0);
+    }
+
+    .product:hover .product-title {
+      color: #8b4513;
+    }
+
+    /* Featured Collection */
+    .featured-collection {
+      padding: 80px 40px;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat fixed;
+      position: relative;
+      color: white;
+    }
+
+    .featured-collection::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(91, 57, 33, 0.85);
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .featured-content h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .featured-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .collection-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      border: 2px solid white;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .collection-btn:hover {
+      background: white;
+      color: #8b4513;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 40px;
+      text-align: center;
+      background: #f9f5f0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      font-size: 1.1rem;
+      color: #5a3921;
+      margin-bottom: 5px;
+    }
+
+    .author-info p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .rating {
+      color: #d4a76a;
+      margin-top: 5px;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      padding: 80px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #8b4513, #a05a28);
+      color: white;
+    }
+
+    .newsletter h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .newsletter p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 30px 0 0 30px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      padding: 15px 30px;
+      background: #5a3921;
+      color: white;
+      border: none;
+      border-radius: 0 30px 30px 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      background: #3a2215;
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      padding: 60px 40px 30px;
+      color: #333;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #5a3921;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: #8b4513;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .footer-col ul li a:hover {
+      color: #8b4513;
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: #8b4513;
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Dark Mode Styles */
+    .dark-mode {
+      background: #0f0a05;
+      color: #e8d9c5;
+    }
+
+    .dark-mode .hero::before {
+      background: rgba(0,0,0,0.6);
+    }
+
+    .dark-mode .navbar {
+      background: rgba(26, 18, 11, 0.95);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .dark-mode .promo-bar {
+      background: #1a120b;
+      color: #d4a76a;
+    }
+
+    .dark-mode .logo h2 {
+      color: #d4a76a;
+    }
+
+    .dark-mode .nav-links a {
+      color: #e8d9c5;
+    }
+
+    .dark-mode .nav-links a.active {
+      color: #fff;
+    }
+
+    .dark-mode .nav-links a:hover {
+      color: #d4a76a;
+    }
+
+    .dark-mode .icons i {
+      color: #e8d9c5;
+    }
+
+    .dark-mode .shop-now a {
+      color: #e8d9c5;
+    }
+
+    .dark-mode .toggle-switch {
+      background-color: #3a2a1a;
+    }
+
+    .dark-mode .products,
+    .dark-mode .testimonials {
+      background: #120c06;
+    }
+
+    .dark-mode .category-card,
+    .dark-mode .product,
+    .dark-mode .testimonial {
+      background: #1a120b;
+      border: 1px solid #3a2a1a;
+    }
+
+    .dark-mode .category-card h3,
+    .dark-mode .product-title,
+    .dark-mode .product-category,
+    .dark-mode .current-price,
+    .dark-mode .author-info h4,
+    .dark-mode .footer-col h3 {
+      color: #d4a76a;
+    }
+
+    .dark-mode .product-info,
+    .dark-mode .testimonial-content,
+    .dark-mode .author-info p,
+    .dark-mode .footer-col ul li a {
+      color: #e8d9c5;
+    }
+
+    .dark-mode footer {
+      background: #1a120b;
+      color: #e8d9c5;
+    }
+
+    .dark-mode .footer-bottom {
+      border-top: 1px solid #3a2a1a;
+    }
+
+    .dark-mode .social-link {
+      background: #3a2a1a;
+      color: #e8d9c5;
+    }
+
+    .dark-mode .social-link:hover {
+      background: #d4a76a;
+      color: #1a120b;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .featured-content h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title, .categories h2, .featured-content h2, .newsletter h2 {
+        font-size: 2rem;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-input {
+        border-radius: 30px;
+        margin-bottom: 10px;
+      }
+
+      .newsletter-btn {
+        border-radius: 30px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        height: 50vh;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title, .categories h2, .featured-content h2, .newsletter h2 {
+        font-size: 1.6rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="promo-bar">
+    <div class="marquee">
+      <span><i class="fas fa-tag"></i> FREE SHIPPING ON ORDERS OVER ₹1999 <i class="fas fa-gift"></i> NEW COLLECTION LAUNCHED <i class="fas fa-star"></i> 20% OFF FOR FIRST ORDER</span>
+      <span><i class="fas fa-tag"></i> FREE SHIPPING ON ORDERS OVER ₹1999 <i class="fas fa-gift"></i> NEW COLLECTION LAUNCHED <i class="fas fa-star"></i> 20% OFF FOR FIRST ORDER</span>
+    </div>
+  </div>
+<div class="navbar">
+  <div class="logo">
+    <h2>Stich n Culture</h2>
+  </div>
+  <div class="nav-links">
+    <a href="landing page 2.html">HOME</a>
+    <a href="ladies.html" class="active">WOMEN</a>
+    <a href="mens landing.html">MEN</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+  <div class="icons">
+    <div class="shop-now"><a href="#">SHOP NOW</a></div>
+    <i class="fas fa-search" data-count=""></i>
+    <i class="far fa-user" data-count=""></i>
+    <i class="far fa-heart" data-count="5"></i>
+    <i class="fas fa-bag-shopping" data-count="3"></i>
+    <div class="toggle-switch" id="darkToggle"></div>
+  </div>
+</div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Elegance Redefined</h1>
+      <p>Discover our exquisite collection of women's fashion that blends tradition with contemporary style</p>
+      <a href="#" class="hero-btn">SHOP THE COLLECTION</a>
+    </div>
+  </section>
+
+  <section class="categories reveal">
+    <h2>Shop By Category</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Dresses">
+        <h3>Dresses</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Tops">
+        <h3>Tops & Tees</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://www.lashkaraa.com/cdn/shop/articles/indian-ethnic-wear-styles-for-girls.webp?v=1724074134&width=2048" alt="Ethnic Wear">
+        <h3>Ethnic Wear</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTDJYAIB-aS7KdB6jAI4rbxhlKLUfIkrrlgkspfTcSFM-We6qf2MXcqU015NJsJb5s1Sc&usqp=CAU" alt="Bottoms">
+        <h3>Bottoms</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPAivUQ6H-DoYPQjJEnUUH1apTNs95WlDTDg&s" alt="Accessories">
+        <h3>Accessories</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <h2 class="section-title reveal">New Arrivals</h2>
+    <p class="section-subtitle reveal">Discover our latest collection of women's fashion for the season</p>
+    <div class="product-grid">
+      <div class="product reveal delay-1">
+        <div class="product-badge">New</div>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Summer Dress">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Dresses</p>
+          <h3 class="product-title">Floral Summer Dress</h3>
+          <div class="product-price">
+            <span class="current-price">₹1,299</span>
+            <span class="original-price">₹1,999</span>
+            <span class="discount">(35% OFF)</span>
+          </div>
+        </div>
+      </div>
+      <div class="product reveal delay-2">
+        <div class="product-badge">Bestseller</div>
+        <div class="product-img">
+          <img src="https://www.dhresource.com/webp/m/0x0/f2/albu/g9/M00/47/4B/rBVaWFy9s0iAGJEtAASOSOl4NGg576.jpg" alt="Floral Top">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Tops</p>
+          <h3 class="product-title">Floral Print Blouse</h3>
+          <div class="product-price">
+            <span class="current-price">₹899</span>
+            <span class="original-price">₹1,299</span>
+            <span class="discount">(30% OFF)</span>
+          </div>
+        </div>
+      </div>
+      <div class="product reveal delay-3">
+        <div class="product-img">
+          <img src="https://cpimg.tistatic.com/08270446/b/4/MODERN-KURTI.jpg" alt="Modern Kurti">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Ethnic Wear</p>
+          <h3 class="product-title">Modern Printed Kurti</h3>
+          <div class="product-price">
+            <span class="current-price">₹1,099</span>
+            <span class="original-price">₹1,599</span>
+            <span class="discount">(31% OFF)</span>
+          </div>
+        </div>
+      </div>
+      <div class="product reveal delay-4">
+        <div class="product-badge">Limited</div>
+        <div class="product-img">
+          <img src="https://ae01.alicdn.com/kf/S02e7da8fe89447bcab65425744a47669F.jpg" alt="Stylish Jeans">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Bottoms</p>
+          <h3 class="product-title">High-Waist Jeans</h3>
+          <div class="product-price">
+            <span class="current-price">₹1,499</span>
+            <span class="original-price">₹2,199</span>
+            <span class="discount">(32% OFF)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-collection reveal">
+    <div class="featured-content">
+      <h2>Summer Essentials</h2>
+      <p>Our curated collection of lightweight fabrics and breezy silhouettes will keep you cool and stylish all season long. From flowy maxi dresses to comfortable linen sets, find everything you need for your summer wardrobe.</p>
+      <a href="#" class="collection-btn">EXPLORE COLLECTION</a>
+    </div>
+  </section>
+
+  <section class="products">
+    <h2 class="section-title reveal">Best Sellers</h2>
+    <p class="section-subtitle reveal">Our most loved pieces by women everywhere</p>
+    <div class="product-grid">
+      <div class="product reveal delay-1">
+        <div class="product-badge">Trending</div>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Designer Blouse">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Ethnic Wear</p>
+          <h3 class="product-title">Embroidered Designer Blouse</h3>
+          <div class="product-price">
+            <span class="current-price">₹1,599</span>
+            <span class="original-price">₹2,499</span>
+            <span class="discount">(36% OFF)</span>
+          </div>
+        </div>
+      </div>
+      <div class="product reveal delay-2">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Summer Skirt">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Skirts</p>
+          <h3 class="product-title">A-Line Summer Skirt</h3>
+          <div class="product-price">
+            <span class="current-price">₹999</span>
+            <span class="original-price">₹1,499</span>
+            <span class="discount">(33% OFF)</span>
+          </div>
+        </div>
+      </div>
+      <div class="product reveal delay-3">
+        <div class="product-badge">Popular</div>
+        <div class="product-img">
+          <img src="https://i.ebayimg.com/images/g/A78AAOSwx8FnNegR/s-l400.jpg" alt="Casual Dress">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Dresses</p>
+          <h3 class="product-title">Casual Cotton Dress</h3>
+          <div class="product-price">
+            <span class="current-price">₹1,199</span>
+            <span class="original-price">₹1,799</span>
+            <span class="discount">(33% OFF)</span>
+          </div>
+        </div>
+      </div>
+      <div class="product reveal delay-4">
+        <div class="product-img">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHxeExbPpySZvMtt1WRsjZzd8Tw_fDjky68w&s" alt="Denim Jacket">
+          <div class="product-actions">
+            <div class="product-action"><i class="far fa-heart"></i></div>
+            <div class="product-action"><i class="fas fa-eye"></i></div>
+            <div class="product-action"><i class="fas fa-shopping-cart"></i></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">Outerwear</p>
+          <h3 class="product-title">Oversized Denim Jacket</h3>
+          <div class="product-price">
+            <span class="current-price">₹1,799</span>
+            <span class="original-price">₹2,499</span>
+            <span class="discount">(28% OFF)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials reveal">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-subtitle">Hear from women who love our fashion</p>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="testimonial-content">
+          "The quality of the fabric and stitching is exceptional. I've received so many compliments on my floral summer dress. Will definitely be shopping here again!"
+        </div>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya K." class="author-img">
+          <div class="author-info">
+            <h4>Priya K.</h4>
+            <p>Delhi</p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          "I was skeptical about ordering online, but the kurti fits perfectly and looks exactly like the picture. The delivery was faster than expected too!"
+        </div>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ananya S." class="author-img">
+          <div class="author-info">
+            <h4>Ananya S.</h4>
+            <p>Bangalore</p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          "The customer service is outstanding! They helped me exchange my jeans for the right size without any hassle. The quality is worth every rupee."
+        </div>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Meera P." class="author-img">
+          <div class="author-info">
+            <h4>Meera P.</h4>
+            <p>Mumbai</p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter reveal">
+    <h2>Join Our Fashion Community</h2>
+    <p>Subscribe to our newsletter for exclusive offers, new arrivals, and styling tips</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address" class="newsletter-input" required>
+      <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Bestsellers</a></li>
+          <li><a href="#">Sale</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Help</h3>
+        <ul>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Shipping Information</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>About</h3>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Connect</h3>
+        <p>Follow us on social media for updates and inspiration</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Stich n Culture. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.classList.toggle('active');
+      
+      // Add animation when toggling dark mode
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.style.animation = 'fadeToDark 0.6s ease';
+      } else {
+        document.body.style.animation = 'fadeToLight 0.6s ease';
+      }
+    });
+
+    // Add keyframes for the toggle animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeToDark {
+        from { background: linear-gradient(135deg, #f5e8d5, #e8d9c5); }
+        to { background: #0f0a05; }
+      }
+      @keyframes fadeToLight {
+        from { background: #0f0a05; }
+        to { background: linear-gradient(135deg, #f5e8d5, #e8d9c5); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Scroll Reveal Animation
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      const windowHeight = window.innerHeight;
+      const revealPoint = 100;
+
+      reveals.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        
+        if (elementTop < windowHeight - revealPoint) {
+          element.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Marquee animation pause on hover
+    const promoBar = document.querySelector('.promo-bar');
+    promoBar.addEventListener('mouseenter', () => {
+      document.querySelector('.marquee').style.animationPlayState = 'paused';
+    });
+    promoBar.addEventListener('mouseleave', () => {
+      document.querySelector('.marquee').style.animationPlayState = 'running';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Cart count animation
+    const cartIcon = document.querySelector('.fa-bag-shopping');
+    cartIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Animation for cart click
+      cartIcon.style.transform = 'translateY(-5px) scale(1.2)';
+      setTimeout(() => {
+        cartIcon.style.transform = '';
+      }, 300);
+    });
+  </script>
+</body>
+</html>
